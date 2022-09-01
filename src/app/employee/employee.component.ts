@@ -22,7 +22,6 @@ export class EmployeeComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private addEmployee: AddEmployeeComponent,
     private route: ActivatedRoute,
     private service: EmployeeService
   ) {
