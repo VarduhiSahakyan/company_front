@@ -1,1 +1,20 @@
-<p>add works!</p>
+
+<mat-dialog-content>
+  <p>Add employee</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)] = "data.employeeName">
+
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Surname</mat-label>
+    <input matInput [(ngModel)] = "data.employeeSurname">
+
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data">No Thanks</button>
+  <button mat-button (click)="createEmployee()">Add</button>
+</mat-dialog-actions>
+
+

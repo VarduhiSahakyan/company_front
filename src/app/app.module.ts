@@ -10,6 +10,8 @@ import { EditEmployeeComponent } from './employee/edit/edit-employee.component';
 import { AddEmployeeComponent } from './employee/add/add-employee.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from "@angular/material/input";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
@@ -18,6 +20,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {PortalModule} from "@angular/cdk/portal";
 import {MatTreeModule} from "@angular/material/tree";
+ import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import {MatTreeModule} from "@angular/material/tree";
     EmployeeComponent,
     EditEmployeeComponent,
     AddEmployeeComponent
+
   ],
   imports: [
     AppRoutingModule,
@@ -35,15 +39,21 @@ import {MatTreeModule} from "@angular/material/tree";
     NoopAnimationsModule,
     MatInputModule,
     MatTableModule,
+    MatButtonModule,
+    MatIconModule,
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    MatDialogModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService,
+    AddEmployeeComponent,
+    // ,MatDialogRef
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {EmployeeService} from "../employee.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Employee} from "../employee";
 
 @Component({
   selector: 'app-addemployee',
@@ -13,7 +15,12 @@ export class AddEmployeeComponent implements OnInit {
   validMessage: string = "";
 
   constructor(   private service: EmployeeService,
-                 private formBuilder: FormBuilder) { }
+                 private formBuilder: FormBuilder,
+                 public dialogRef: MatDialogRef<AddEmployeeComponent>,
+                 @Inject(MAT_DIALOG_DATA) public data: Employee
+  ) { }
+
+
 
   ngOnInit(): void {
     this.initializeForm();
@@ -25,7 +32,6 @@ export class AddEmployeeComponent implements OnInit {
       this.validMessage = "Employee saved!";
       this.service.saveEmployee(employeeData).subscribe(
         response => {
-          this.employeeForm.reset();
           return response;
         }, error => {
           return (error);
@@ -34,6 +40,11 @@ export class AddEmployeeComponent implements OnInit {
     }else {
       this.validMessage = "Please fill out the form before submitting!";
     }
+    console.log(employeeData);
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   initializeForm() {

@@ -1,19 +1,68 @@
+<button mat-button (click)="openDialog()">Open dialog</button>
+
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="employeeName">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let employee"> {{employee.employeeName}} </td>
-    </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="employeeName">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.employeeName}} </td>
+  </ng-container>
 
-    <!-- Surname Column -->
-    <ng-container matColumnDef="employeeSurname">
-      <th mat-header-cell *matHeaderCellDef> Surname </th>
-      <td mat-cell *matCellDef="let employee"> {{employee.employeeSurname}} </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <!-- Surname Column -->
+  <ng-container matColumnDef="employeeSurname">
+    <th mat-header-cell *matHeaderCellDef> Surname </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.employeeSurname}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<ol>-->
+<!--  <li>-->
+<!--    <mat-form-field appearance="fill">-->
+<!--      <mat-label>What's your name?</mat-label>-->
+<!--      <input matInput [(ngModel)]="employeeName">-->
+<!--      <input matInput [(ngModel)]="employeeSurname">-->
+<!--    </mat-form-field>-->
+<!--  </li>-->
+<!--  <li>-->
+<!--    <button mat-button (click)="openDialog()">Open dialog</button>-->
+<!--  </li>-->
+<!--  <li *ngIf="employeeName">-->
+<!--    You chose: <i>{{employeeName}}</i>-->
+<!--  </li> <li *ngIf="employeeSurname">-->
+<!--    You chose: <i>{{employeeSurname}}</i>-->
+<!--  </li>-->
+<!--</ol>-->
+
 
 
 
