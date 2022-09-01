@@ -20,7 +20,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {PortalModule} from "@angular/cdk/portal";
 import {MatTreeModule} from "@angular/material/tree";
- import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,7 @@ import {MatTreeModule} from "@angular/material/tree";
   ],
   providers: [EmployeeService,
     AddEmployeeComponent,
-    // ,MatDialogRef
+
   ],
   bootstrap: [AppComponent]
 })

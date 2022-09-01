@@ -13,11 +13,12 @@ export class AddEmployeeComponent implements OnInit {
 
   employeeForm: any;
   validMessage: string = "";
-
+  employeeName: string = "";
+  employeeSurname: string = "";
   constructor(   private service: EmployeeService,
                  private formBuilder: FormBuilder,
-                 public dialogRef: MatDialogRef<AddEmployeeComponent>,
-                 @Inject(MAT_DIALOG_DATA) public data: Employee
+               // public dialogRef: MatDialogRef<AddEmployeeComponent>,
+               //  @Inject(MAT_DIALOG_DATA) public data: Employee
   ) { }
 
 
@@ -32,6 +33,7 @@ export class AddEmployeeComponent implements OnInit {
       this.validMessage = "Employee saved!";
       this.service.saveEmployee(employeeData).subscribe(
         response => {
+          this.employeeForm.reset();
           return response;
         }, error => {
           return (error);
@@ -43,9 +45,9 @@ export class AddEmployeeComponent implements OnInit {
     console.log(employeeData);
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+  // onNoClick(): void {
+  //   this.employeeForm.close();
+  // }
 
   initializeForm() {
     this.employeeForm = this.formBuilder.group({

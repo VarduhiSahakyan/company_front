@@ -36,7 +36,7 @@ export class EmployeeComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(AddEmployeeComponent,{
       width: '250px',
-      data: {employeeName: this.employeeName, employeeSurname: this.employeeSurname}
+      data: {employeeName: this.employeeName, employeeSurname: this.employeeSurname},
 
     });
 
