@@ -5,6 +5,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Employee} from "./employee";
 import {AddEmployeeComponent} from "./add/add-employee.component";
 import {MatDialog} from '@angular/material/dialog';
+import {EditEmployeeComponent} from "./edit/edit-employee.component";
 
 
 @Component({
@@ -26,30 +27,41 @@ export class EmployeeComponent implements OnInit {
     private route: ActivatedRoute,
     private service: EmployeeService
   ) {
-    this.displayedColumns = ['employeeName', 'employeeSurname'];
+    this.displayedColumns = ['employeeName', 'employeeSurname', 'actions'];
   }
 
   ngOnInit(): void {
     this.getAllEmployees();
   }
 
-  openDialog() {
+  openDialogForAdd() {
     const dialogRef = this.dialog.open(AddEmployeeComponent,{
       width: '250px',
       data: {employeeName: this.employeeName, employeeSurname: this.employeeSurname},
 
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  openDialogForUpdate() {
+    const dialogRef = this.dialog.open(EditEmployeeComponent,{
+      width: '250px' ,
+      data: {employeeName: this.employeeName, employeeSurname: this.employeeSurname},
+
+    });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }
 
   getAllEmployees() {
     this.service.getAllEmployees().subscribe(e => {
       if (e) {
         this.dataSource = new MatTableDataSource<Employee>(e);
         this.employees = e;
+        console.log(e);
       }
     });
   }

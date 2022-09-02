@@ -1,8 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {EmployeeService} from "../employee.service";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Employee} from "../employee";
+
 
 @Component({
   selector: 'app-addemployee',
@@ -14,14 +13,10 @@ export class AddEmployeeComponent implements OnInit {
   employeeForm: any;
   validMessage: string = "";
   employeeName: string = "";
-  employeeSurname: string = "";
+
   constructor(   private service: EmployeeService,
-                 private formBuilder: FormBuilder,
-               // public dialogRef: MatDialogRef<AddEmployeeComponent>,
-               //  @Inject(MAT_DIALOG_DATA) public data: Employee
+                 private formBuilder: FormBuilder
   ) { }
-
-
 
   ngOnInit(): void {
     this.initializeForm();
@@ -42,12 +37,17 @@ export class AddEmployeeComponent implements OnInit {
     }else {
       this.validMessage = "Please fill out the form before submitting!";
     }
+    // todo delete log
     console.log(employeeData);
   }
 
-  // onNoClick(): void {
-  //   this.employeeForm.close();
-  // }
+  //todo
+  getErrorMessage() {
+    if (this.employeeForm.employeeName.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.employeeForm.employeeName.hasError('email') ? 'Not a valid email' : '';
+  }
 
   initializeForm() {
     this.employeeForm = this.formBuilder.group({
@@ -55,5 +55,4 @@ export class AddEmployeeComponent implements OnInit {
       employeeSurname: ['', Validators.required]
     });
   }
-
 }

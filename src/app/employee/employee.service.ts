@@ -18,8 +18,16 @@ export class EmployeeService {
     return this.http.post('/employee', employee,{responseType: 'text'});
   }
 
+  updateEmployee(employee: any){
+    return this.http.put('/employee', employee,{responseType: 'text'});
+  }
+
   getEmployeeById(id:number){
     return this.http.get('/employee/' + id, {responseType: 'text'});
+  }
+
+  getEmployeeBySurname(surname: any){
+    return this.http.get('/employee/' + surname, {responseType: 'text'});
   }
 
   deleteEmployee(id: number){

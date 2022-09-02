@@ -1,1 +1,21 @@
-<p>edit works!</p>
+<p>Update employee</p>
+<form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
+  <mat-form-field >
+    <mat-label>Name</mat-label>
+    <label>
+      <input matInput [(ngModel)]="employee.employeeName" placeholder="employeeName">
+<!--             placeholder="employeeName" [formControl]="employee.employeeName"-->
+
+    </label>
+  </mat-form-field>
+
+  <mat-form-field >
+    <mat-label>Surname</mat-label>
+    <label>
+      <input matInput employeeSurname ="employeeSurname" formControlName="employeeSurname">
+    </label>
+
+  </mat-form-field>
+  <button mat-button [mat-dialog-close]="">Cancel</button>
+  <button mat-button type="submit" [disabled]="!employeeForm.valid" >Update</button>
+</form>

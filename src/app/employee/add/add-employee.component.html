@@ -1,19 +1,19 @@
 <p>Add employee</p>
 <form [formGroup]="employeeForm" (ngSubmit)="createEmployee()">
-<mat-form-field appearance="fill">
+<mat-form-field >
   <mat-label>Name</mat-label>
   <label>
     <input matInput employeeName ="employeeName" formControlName="employeeName">
   </label>
 </mat-form-field>
 
-<mat-form-field appearance="fill">
+<mat-form-field >
   <mat-label>Surname</mat-label>
   <label>
     <input matInput employeeSurname ="employeeSurname" formControlName="employeeSurname">
   </label>
 
 </mat-form-field>
-  <button mat-button [mat-dialog-close]="">No Thanks</button>
-<button mat-button type="submit">Add</button>
+  <button mat-button [mat-dialog-close]="">Cancel</button>
+<button mat-button type="submit" [disabled]="!employeeForm.valid" >Add</button>
 </form>
